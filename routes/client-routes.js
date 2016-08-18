@@ -17,13 +17,13 @@ router.get('/', function (req, res) {
 })
 
 router.post('/', function (req, res) {
-  service.save(req.body, function (error, clients) {
+  service.save(req.body, function (error, client) {
     // send internal server error
     if (error) {
       res.status(400).send(error)
     } else {
-      res.location('/clients/' + clients.cpf)
-      res.status(201).send(clients)
+      res.location('/clients/' + client.cpf)
+      res.status(201).send(client)
     }
   })
 })
@@ -39,17 +39,25 @@ router.put('/:cpf', function (req, res) {
   })
 })
 
-router.delete('/', function (req, res) {})
-
 router.get('/:cpf', function (req, res) {
   var cpf = req.params['cpf']
   var client = { cpf: cpf }
 
-  service.findById(client, function (error, clients) {
+  service.findById(client, function (error, clientModel) {
+    // if error return not found
+    if (error) res.status(404)
+    if (clientModel) res.send(clientModel)
+    else res.status(404).send('Client Not Found')
+  })
+})
+router.delete('/:cpf', function (req, res) {
+  var cpf = req.params['cpf']
+  var client = { cpf: cpf }
+  service.remove(client, function (error, clients) {
     // if error return not found
     if (error) res.status(404)
     // send clients collection
-    res.send(clients)
+    res.status(200).end()
   })
 })
 

@@ -27,7 +27,7 @@
         entityModel.isValid(entityModel, callback)
       },
       remove: function (key, callback) {
-        Model.remove(key)
+        Model.remove(key, callback)
       },
       getKey: function (entity) {
         var entityModel = new Model(entity)

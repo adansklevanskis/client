@@ -8,7 +8,7 @@
     // go through all the errors...
     for (var errName in err.errors) {
       var errFormatted = 'Field ' + err.errors[errName].path + ': ' + err.errors[errName].message
-      errMessage.error.push(errFormatted)
+      errMessage.errors.push(errFormatted)
     }
     return errMessage
   }
@@ -70,12 +70,6 @@
         })
       },
       update: function (id, client, callback) {
-        model.findById(id, function (err, doc) {
-          if (err) return callback(err)
-        // doc.name = 'jason borne'
-        // doc.save(callback)
-        })
-
         model.isValid(client, function (error, clientModel) {
           if (error) {
             callback(error)
@@ -91,6 +85,9 @@
             })
           }
         })
+      },
+      remove: function (id, callback) {
+        repository.remove(id, callback)
       }
     }
   }

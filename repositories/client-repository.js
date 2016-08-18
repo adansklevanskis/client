@@ -1,4 +1,4 @@
-(function () {
+;(function () {
   'use strict'
 
   // contract for ClientRepository
@@ -17,6 +17,9 @@
       },
       update: function (id, client, callback) {
         context.update(id, client, callback)
+      },
+      remove: function (id, callback) {
+        context.remove(id, callback)
       },
       search: function (client, callback) {
         context.search(client, callback)

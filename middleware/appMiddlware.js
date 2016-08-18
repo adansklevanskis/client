@@ -15,21 +15,20 @@
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(bodyParser.json())
 
-    // register routers
+    // register client api routes
     app.use('/api/clients', routes)
+    // unregistered route  send not found
+    app.use('/*', function (req, res) {
+      res.status(404).send('Resource not found!')
+    })
 
     // enable cors for all origin
     app.use(cors)
 
-    // internal error
+    // handling errors as internal error
     app.use(function (err, req, res, next) {
       console.error(err.stack)
       res.status(500).send('Internal server error.')
-    })
-
-    // resource not found
-    app.use(function (req, res, next) {
-      res.status(404).send('Resource not found!')
     })
   }
 }())
