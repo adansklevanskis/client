@@ -1,0 +1,29 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "This api handles new clients registration",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adansklevanskis/client.git"
+  },
+  "author": "adans klevanskis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adansklevanskis/client/issues"
+  },
+  "homepage": "https://github.com/adansklevanskis/client#readme",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "body-parser": "^1.15.2",
+    "config": "^1.21.0",
+    "cors": "^2.7.1",
+    "cpf_cnpj": "^0.1.1",
+    "express": "^4.14.0",
+    "mocha": "^3.0.2",
+    "mongoose": "^4.5.9"
+  }
+}
